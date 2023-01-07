@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * <p>
  * 代码生成器
+ * 注意：生成时最好指定项目外路径，再复制过来，避免覆盖了已有代码不自知。
  * </p>
  *
  * @author 曹申阳
@@ -65,9 +66,9 @@ public class FastAutoGeneratorUtil {
                     builder.author("曹申阳")
                             .disableOpenDir()
                             .enableSwagger() // 开启 swagger 模式
-                            .fileOverride() // 覆盖已生成文件
+//                            .fileOverride() // 覆盖已生成文件 慎重操作避免覆盖现有代码
                             // 指定输出目录
-                            .outputDir(path + "\\" + loadModuleName.get() + "\\src\\main\\java");
+                            .outputDir(path + "\\" + loadModuleName.get() + "\\src\\test\\java");
                 })
                 // 包配置/
                 .packageConfig(builder -> {
@@ -77,6 +78,7 @@ public class FastAutoGeneratorUtil {
                             .serviceImpl("service.impl")
                             .mapper("mapper")
                             .controller("controller")
+                            .entity("domain.entity")
                             // 设置mapperXml生成路径
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, path + "\\" + loadModuleName.get() + "\\src\\main\\resources\\mapper"));
                 })

@@ -10,7 +10,7 @@ import com.yang.erp.common.constant.ResponseCodeEnum;
  * @author 曹申阳
  * @since 2022-10-12 15:13:04
  */
-public class ItShareException extends RuntimeException {
+public class ErpException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,7 @@ public class ItShareException extends RuntimeException {
      */
     private final ResponseCodeEnum code;
 
-    public ItShareException(ResponseCodeEnum code) {
+    public ErpException(ResponseCodeEnum code) {
         this.code = code;
     }
 

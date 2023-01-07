@@ -1,16 +1,12 @@
 package com.yang.erp.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -22,6 +18,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("sys_dept")
 @ApiModel(value = "Dept对象", description = "部门表")
 public class Dept implements Serializable {
@@ -36,7 +35,7 @@ public class Dept implements Serializable {
     private String name;
 
     @ApiModelProperty("部门层级")
-    private Integer level;
+    private String level;
 
     @ApiModelProperty("排序")
     private Integer sort;

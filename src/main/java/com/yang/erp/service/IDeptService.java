@@ -1,5 +1,6 @@
 package com.yang.erp.service;
 
+import com.yang.erp.domain.dto.DeptDto;
 import com.yang.erp.domain.entity.Dept;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDeptService extends IService<Dept> {
 
+    /**
+     * 保存部门
+     * @param deptDto deptDto
+     */
+    void saveDept(DeptDto deptDto);
 }

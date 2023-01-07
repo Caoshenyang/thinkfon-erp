@@ -43,8 +43,8 @@ public class GlobalExceptionAdvice {
         return new CommonResponse<String>().fail().setMessage(StringUtils.join(messages,";"));
     }
 
-    @ExceptionHandler(value = ItShareException.class)
-    public CommonResponse<String> handlerItShareException(ItShareException e) {
+    @ExceptionHandler(value = ErpException.class)
+    public CommonResponse<String> handlerItShareException(ErpException e) {
         CommonResponse<String> response = new CommonResponse<String>(e.getCode()).setData(e.getMessage());
         log.error("itshare service has error [{}]", e.getMessage(), e);
         return response;

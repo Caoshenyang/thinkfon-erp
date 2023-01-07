@@ -40,7 +40,8 @@ public enum ResponseCodeEnum {
     WECHAT_TICKET_ERROR(42001, "获取二维码异常，请稍后再试！"),
     WECHAT_MENU_ERROR(42002, "获取菜单异常，请稍后再试！"),
     WECHAT_MENU_ERROR_CREAT(42003, "创建菜单异常，请稍后再试！"),
-
+    // 部门相关异常
+    DEPT_EXIST(51001, "同一层级下存在相同名称的部门！"),
     ;
 
     /**
