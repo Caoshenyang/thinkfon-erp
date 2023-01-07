@@ -1,6 +1,6 @@
 package com.yang.erp.mapper;
 
-import com.yang.erp.entity.RoleUser;
+import com.yang.erp.domain.entity.RoleUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

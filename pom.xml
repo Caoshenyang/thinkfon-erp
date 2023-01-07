@@ -24,6 +24,7 @@
         <mysql-connector.version>8.0.30</mysql-connector.version>
         <screw-core.version>1.0.5</screw-core.version>
         <knife4j.version>3.0.3</knife4j.version>
+        <passay.version>1.6.1</passay.version>
     </properties>
 
 
@@ -72,6 +73,18 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
+        </dependency>
+
+        <!-- 密码规则校验 -->
+        <dependency>
+            <groupId>org.passay</groupId>
+            <artifactId>passay</artifactId>
+            <version>${passay.version}</version>
+        </dependency>
+        <!-- JSR380 验证框架 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <!--  lombok 插件依赖      -->

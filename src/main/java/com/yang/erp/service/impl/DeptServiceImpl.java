@@ -1,6 +1,6 @@
 package com.yang.erp.service.impl;
 
-import com.yang.erp.entity.Dept;
+import com.yang.erp.domain.entity.Dept;
 import com.yang.erp.mapper.DeptMapper;
 import com.yang.erp.service.IDeptService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

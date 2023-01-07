@@ -1,6 +1,6 @@
 package com.yang.erp.service;
 
-import com.yang.erp.entity.AclModule;
+import com.yang.erp.domain.entity.AclModule;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

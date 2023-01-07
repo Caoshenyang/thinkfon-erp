@@ -1,6 +1,6 @@
 package com.yang.erp.mapper;
 
-import com.yang.erp.entity.AclModule;
+import com.yang.erp.domain.entity.AclModule;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
