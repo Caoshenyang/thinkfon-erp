@@ -1,4 +1,4 @@
-package com.yang.erp.domain.dto;
+package com.yang.erp.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,15 +10,15 @@ import javax.validation.constraints.NotNull;
 
 /**
  * <p>
- * 部门数据传输对象
+ * 部门VO对象
  * </p>
  *
  * @author 曹申阳
- * @since 2023-01-07 14:12:04
+ * @since 2023-01-07 16:19:05
  */
 @Data
 @ApiModel(value = "Dept对象")
-public class DeptDto {
+public class DeptVo {
 
     @ApiModelProperty("部门ID")
     private Long id;

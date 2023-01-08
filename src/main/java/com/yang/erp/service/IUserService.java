@@ -1,6 +1,6 @@
 package com.yang.erp.service;
 
-import com.yang.erp.domain.entity.User;
+import com.yang.erp.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

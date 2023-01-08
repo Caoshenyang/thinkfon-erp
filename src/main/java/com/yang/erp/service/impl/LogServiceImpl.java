@@ -1,6 +1,6 @@
 package com.yang.erp.service.impl;
 
-import com.yang.erp.domain.entity.Log;
+import com.yang.erp.entity.Log;
 import com.yang.erp.mapper.LogMapper;
 import com.yang.erp.service.ILogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

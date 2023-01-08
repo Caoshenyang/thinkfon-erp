@@ -2,7 +2,7 @@ package com.yang.erp.common.advice;
 
 import com.yang.erp.common.annotation.IgnoreResponseAdvice;
 import com.yang.erp.common.constant.ResponseCodeEnum;
-import com.yang.erp.domain.vo.CommonResponse;
+import com.yang.erp.vo.CommonResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

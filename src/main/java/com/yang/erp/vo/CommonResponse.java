@@ -1,4 +1,4 @@
-package com.yang.erp.domain.vo;
+package com.yang.erp.vo;
 
 import com.yang.erp.common.constant.ResponseCodeEnum;
 import lombok.AllArgsConstructor;

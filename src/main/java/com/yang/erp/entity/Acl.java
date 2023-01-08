@@ -1,4 +1,4 @@
-package com.yang.erp.domain.entity;
+package com.yang.erp.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -14,7 +14,7 @@ import lombok.Setter;
 
 /**
  * <p>
- *
+ * 权限表
  * </p>
  *
  * @author 曹申阳
@@ -22,27 +22,42 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("sys_log")
-@ApiModel(value = "Log对象")
-public class Log implements Serializable {
+@TableName("sys_acl")
+@ApiModel(value = "Acl对象", description = "权限表")
+public class Acl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("主键ID")
+    @ApiModelProperty("权限ID")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("权限更新类型【1 部门 2 用户 3 权限模块 4 权限 5 角色 6 角色用户关系 7 角色权限关系】")
+    @ApiModelProperty("权限码")
+    private String code;
+
+    @ApiModelProperty("权限名称")
+    private String name;
+
+    @ApiModelProperty("权限所在的权限模块id")
+    private Long aclModuleId;
+
+    @ApiModelProperty("请求的url, 可以填正则表达式")
+    private String url;
+
+    @ApiModelProperty("类型【1 菜单 2 按钮 3 其他】")
     private Integer type;
 
-    @ApiModelProperty("基于type指定的对应对象ID，比如用户、角色、权限表的主键")
-    private Long targetId;
+    @ApiModelProperty("状态 【1 正常 0 冻结】")
+    private Integer status;
 
-    @ApiModelProperty("旧值")
-    private String oldValue;
+    @ApiModelProperty("权限在当前模块下的顺序，由小到大")
+    private Integer sort;
 
-    @ApiModelProperty("新值")
-    private String newValue;
+    @ApiModelProperty("备注")
+    private String remark;
+
+    @ApiModelProperty("创建人")
+    private Long creator;
 
     @ApiModelProperty("操作人")
     private Long operator;
@@ -54,9 +69,6 @@ public class Log implements Serializable {
     @ApiModelProperty("更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
-
-    @ApiModelProperty("当前是否复原过【0 未操作 1 已操作】")
-    private Integer status;
 
 
 }

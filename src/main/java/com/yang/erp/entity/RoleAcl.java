@@ -1,4 +1,4 @@
-package com.yang.erp.domain.entity;
+package com.yang.erp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -19,9 +19,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("sys_role_user")
-@ApiModel(value = "RoleUser对象", description = "")
-public class RoleUser implements Serializable {
+@TableName("sys_role_acl")
+@ApiModel(value = "RoleAcl对象", description = "")
+public class RoleAcl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,8 +32,8 @@ public class RoleUser implements Serializable {
     @ApiModelProperty("角色id")
     private Long roleId;
 
-    @ApiModelProperty("用户id")
-    private Long userId;
+    @ApiModelProperty("权限id")
+    private Long aclId;
 
 
 }

@@ -1,4 +1,4 @@
-package com.yang.erp.domain.dto;
+package com.yang.erp.vo;
 
 import com.yang.erp.common.annotation.PasswordMatch;
 import com.yang.erp.common.annotation.ValidEmail;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- *  user dto
+ *  user vo
  * </p>
  *
  * @author 曹申阳
@@ -22,7 +22,7 @@ import java.io.Serializable;
  */
 @PasswordMatch
 @Data
-public class UserDto implements Serializable {
+public class UserVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

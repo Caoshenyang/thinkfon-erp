@@ -1,4 +1,4 @@
-package com.yang.erp.domain.entity;
+package com.yang.erp.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;

@@ -1,6 +1,6 @@
 package com.yang.erp.common.advice;
 
-import com.yang.erp.domain.vo.CommonResponse;
+import com.yang.erp.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.validation.ObjectError;

@@ -1,6 +1,6 @@
 package com.yang.erp.service.impl;
 
-import com.yang.erp.domain.entity.RoleAcl;
+import com.yang.erp.entity.RoleAcl;
 import com.yang.erp.mapper.RoleAclMapper;
 import com.yang.erp.service.IRoleAclService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

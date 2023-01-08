@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: erp
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   # 数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
