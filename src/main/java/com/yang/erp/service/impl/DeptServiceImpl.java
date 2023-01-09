@@ -1,6 +1,7 @@
 package com.yang.erp.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.yang.erp.common.advice.ErpException;
 import com.yang.erp.common.constant.ResponseCodeEnum;
@@ -11,10 +12,12 @@ import com.yang.erp.mapper.DeptMapper;
 import com.yang.erp.service.IDeptService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yang.erp.vo.DeptVo;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MultiMapUtils;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -26,8 +29,12 @@ import java.util.*;
  * @author 曹申阳
  * @since 2023-01-07
  */
+@RequiredArgsConstructor
 @Service
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
+
+    private final DeptMapper deptMapper;
+
 
     @Override
     public void saveDept(DeptVo deptVo) {
@@ -44,7 +51,41 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
         dept.setLevel(LevelUtil.calculateLevel(getLevel(deptVo.getParentId()), deptVo.getParentId()));
         dept.setCreator(1L);// todo 创建人
         dept.setOperator(1L);// todo 操作人
-        this.save(dept);
+        baseMapper.insert(dept);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateDept(DeptVo deptVo) {
+        if (checkExist(deptVo.getParentId(), deptVo.getName(), deptVo.getId())) {
+            throw new ErpException(ResponseCodeEnum.DEPT_EXIST);
+        }
+        Dept beforeDept = baseMapper.selectById(deptVo.getId());
+        if (beforeDept == null) {
+            throw new ErpException(ResponseCodeEnum.DEPT_NOT_EXIST);
+        }
+        Dept afterDept = Dept.builder()
+                .id(deptVo.getId())
+                .name(deptVo.getName())
+                .parentId(deptVo.getParentId())
+                .sort(deptVo.getSort())
+                .remark(deptVo.getRemark())
+                .build();
+        afterDept.setLevel(LevelUtil.calculateLevel(getLevel(deptVo.getParentId()), deptVo.getParentId()));
+        updateChildrenLevel(beforeDept, afterDept);
+        baseMapper.updateById(afterDept);
+    }
+
+    private void updateChildrenLevel(Dept beforeDept, Dept afterDept) {
+        // 如果当前节点 level 值发生改变，更新子节点的 level 值
+        if (!beforeDept.getLevel().equals(afterDept.getLevel())) {
+            // 查询当前节点所有子节点
+            List<Dept> childList = baseMapper.selectList(new LambdaQueryWrapper<Dept>().like(Dept::getLevel, LevelUtil.calculateLevel(beforeDept.getLevel(),beforeDept.getId())));
+            childList.forEach(dept -> {
+                dept.setLevel(dept.getLevel().replace(beforeDept.getLevel(), afterDept.getLevel()));
+            });
+            this.updateBatchById(childList, 500);
+        }
     }
 
     @Override
@@ -85,8 +126,9 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
     /**
      * 组装树形数据
-     * @param deptDtoList 目标结果
-     * @param level 当前层级
+     *
+     * @param deptDtoList  目标结果
+     * @param level        当前层级
      * @param levelDeptMap 根据层级划分的map
      */
     private void transformDeptTree(List<DeptTreeDto> deptDtoList, String level, MultiValuedMap<String, DeptTreeDto> levelDeptMap) {

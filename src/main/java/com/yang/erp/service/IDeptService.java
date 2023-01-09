@@ -19,13 +19,24 @@ public interface IDeptService extends IService<Dept> {
 
     /**
      * 保存部门
-     * @param deptVo deptDto
+     *
+     * @param deptVo deptVo
      */
     void saveDept(DeptVo deptVo);
 
     /**
+     * 更新部门数据
+     *
+     * @param deptVo deptVo
+     */
+    void updateDept(DeptVo deptVo);
+
+    /**
      * 查询部门树
+     *
      * @return List<DeptTreeDto>
      */
     List<DeptTreeDto> deptTree();
+
+
 }

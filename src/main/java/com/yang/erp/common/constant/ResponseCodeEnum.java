@@ -42,6 +42,7 @@ public enum ResponseCodeEnum {
     WECHAT_MENU_ERROR_CREAT(42003, "创建菜单异常，请稍后再试！"),
     // 部门相关异常
     DEPT_EXIST(51001, "同一层级下存在相同名称的部门！"),
+    DEPT_NOT_EXIST(51002, "操作部门不存在！"),
     ;
 
     /**

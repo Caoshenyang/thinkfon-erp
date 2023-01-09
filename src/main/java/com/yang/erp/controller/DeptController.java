@@ -40,6 +40,13 @@ public class DeptController {
         return new CommonResponse<String>().success().setMessage("新增成功！");
     }
 
+    @ApiOperation("更新部门")
+    @PostMapping("/update")
+    public CommonResponse<String> updateDept(@Valid @RequestBody DeptVo deptVo) {
+        deptService.updateDept(deptVo);
+        return new CommonResponse<String>().success().setMessage("更新成功！");
+    }
+
     @ApiOperation("获取部门树")
     @PostMapping("/tree")
     public CommonResponse<List<DeptTreeDto>> getDeptTree() {

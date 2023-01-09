@@ -15,7 +15,7 @@ public class LevelUtil {
     /**
      * 分割符
      */
-    public final static String SEPARATOR = "/";
+    public final static String SEPARATOR = ".";
 
     /**
      * 根节点
@@ -24,10 +24,10 @@ public class LevelUtil {
 
 
     /**
-     * 计算当前层级
-     * @param parentLevel
-     * @param parentId
-     * @return
+     * 通过父节点计算当前层级
+     * @param parentLevel 上级层级
+     * @param parentId 上级ID
+     * @return 当前层级
      */
     public static String calculateLevel(String parentLevel, long parentId){
         if(StringUtils.isBlank(parentLevel)){
